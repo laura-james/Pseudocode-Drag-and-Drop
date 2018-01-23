@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pseudocode: Day of the Week Converter</title>
+        <link href="../parsons.css" rel="stylesheet" />
+        <link href="../lib/prettify.css" rel="stylesheet" />
+        <script src="../lib/prettify.js"></script>
+		<link rel="icon" href="../favicon.ico">
+    </head>
+    <body>
+        <h2>Write a function to convert a week day number to the correct day</h2>
+
+
+		<p>Heath has the day of the week stored as a number e.g. 0 = Monday, 1 = Tuesday.</p>
+
+		<p>Write a sub-program that takes the number as a parameter and returns the day of the week as a string.
+		If an invalid number is passed in then display "Invalid input"<p>
+        <p>Construct a pseudocode answer by drag&amp;dropping and reordering lines from the
+            left to the right.
+    </p>
+        <div id="sortableTrash" class="sortable-code"></div>
+        <div id="sortable" class="sortable-code">
+        </div>
+        <div style="clear:both;"></div>
+        <p id="buttons">
+            <a href="#" id="newInstanceLink">New instance</a>
+            <a href="#" id="feedbackLink">Get feedback</a>
+        </p>
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/jquery-ui.min.js"></script>
+        <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+        <script src="../lib/underscore-min.js"></script>
+        <script src="../lib/lis.js"></script>
+        <script src="../parsons.js"></script>
+        <script>
+var initial = 
+'function returnDay(dayNo)\n'+
+'   if dayNo==0 then\n'+
+'     returnDay = "Monday"\n'+
+'   else if dayNo==1 then\n'+
+'     returnDay = "Tuesday"\n'+
+'   else if dayNo==2 then\n'+
+'     returnDay = "Wednesday"\n'+
+'   else if dayNo==3 then\n'+
+'     returnDay = "Thursday"\n'+
+'   else if dayNo==4 then\n'+
+'     returnDay = "Friday"\n'+
+'   else if dayNo==5 then\n'+
+'     returnDay = "Saturday"\n'+
+'   else if dayNo==6 then\n'+
+'     returnDay = "Sunday"\n'+
+'   else \n'+
+'     returnDay = "Invalid input"\n'+
+'   end if\n'+
+'   return returnDay\n'+
+'endfunction\n';
+
+        function displayErrors(fb) {
+            if(fb.errors.length > 0) {
+                alert(fb.errors[0]);
+            }
+        } 
+
+        $(document).ready(function(){
+            var parson = new ParsonsWidget({
+                'sortableId': 'sortable',
+                'trashId': 'sortableTrash',
+                'max_wrong_lines': 2,
+                'feedback_cb' : displayErrors
+            });
+            parson.init(initial);
+            parson.shuffleLines();
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                parson.getFeedback();
+            });
+        });
+        </script>
+    </body>
+</html>

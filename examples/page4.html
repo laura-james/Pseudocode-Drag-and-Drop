@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pseudocode: Fizz Buzz</title>
+        <link href="../parsons.css" rel="stylesheet" />
+        <link href="../lib/prettify.css" rel="stylesheet" />
+        <script src="../lib/prettify.js"></script>
+		<link rel="icon" href="../favicon.ico">
+    </head>
+    <body>
+        <h2>Fizz Buzz</h2>
+		<p>Write a program that prints the numbers between 1 and 100 (inclusive).</p>
+        <p>  
+If the number is a multiple of 3, print 'fizz'.  </p>
+        <p>
+If a multiple of 5, print 'buzz'</p>
+        <p>
+If both print 'fizzBuzz'.  </p>
+        <p>
+If not a multiple of 3 or 5, print the digit.</p>
+        <p>
+
+		</p>
+        <p>Construct a pseudocode answer by drag&amp;dropping and reordering lines from the
+            left to the right.
+            </p>
+        <div id="sortableTrash" class="sortable-code"></div>
+        <div id="sortable" class="sortable-code">
+        </div>
+        <div style="clear:both;"></div>
+        <p id="buttons">
+            <a href="#" id="newInstanceLink">New instance</a>
+            <a href="#" id="feedbackLink">Get feedback</a>
+        </p>
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/jquery-ui.min.js"></script>
+        <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+        <script src="../lib/underscore-min.js"></script>
+        <script src="../lib/lis.js"></script>
+        <script src="../parsons.js"></script>
+        <script>
+        var initial = 'for i = 1 to 100\n'+
+'	if i MOD 3 = 0 AND i MOD 5 = 0 then\n'+
+'		print "FizzBuzz"\n'+
+'	else if i MOD 3 = 0 then\n'+
+'		print "Fizz"\n'+
+'	else if i MOD 5 = 0 then\n'+
+'		print "Buzz"\n'+
+'	else\n'+
+'		print i\n'+
+'	end if\n'+
+'end for\n'+
+'while true #distractor\n'
+
+
+
+
+        function displayErrors(fb) {
+            if(fb.errors.length > 0) {
+                alert(fb.errors[0]);
+            }
+        } 
+
+        $(document).ready(function(){
+            var parson = new ParsonsWidget({
+                'sortableId': 'sortable',
+                'trashId': 'sortableTrash',
+                'max_wrong_lines': 1,
+                'feedback_cb' : displayErrors
+            });
+            parson.init(initial);
+            parson.shuffleLines();
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                parson.getFeedback();
+            });
+        });
+        </script>
+    </body>
+</html>

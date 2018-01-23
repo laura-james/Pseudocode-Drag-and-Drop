@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pseudocode: Dog Class (using inheritance)</title>
+        <link href="../parsons.css" rel="stylesheet" />
+        <link href="../lib/prettify.css" rel="stylesheet" />
+        <script src="../lib/prettify.js"></script>
+		<link rel="icon" href="../favicon.ico">
+    </head>
+    <body>
+        <h2>Hangman</h2>
+		<p>Hangman game guessing the word "apple"</p>
+		<p>Allowed 7 wrong answers</p>
+		<p>Uses a boolean variable called playerwon to see if player has won</p>
+		<p>Contains a separate procedure called makeGuess which takes in wordToGuess, letter, and guessedWord</p>
+		
+        <p>Construct a pseudocode answer by drag&amp;dropping and reordering lines from the
+            left to the right.
+            </p>
+        <div id="sortableTrash" class="sortable-code"></div>
+        <div id="sortable" class="sortable-code">
+        </div>
+        <div style="clear:both;"></div>
+        <p id="buttons">
+            <a href="#" id="newInstanceLink">New instance</a>
+            <a href="#" id="feedbackLink">Get feedback</a>
+        </p>
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/jquery-ui.min.js"></script>
+        <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+        <script src="../lib/underscore-min.js"></script>
+        <script src="../lib/lis.js"></script>
+        <script src="../parsons.js"></script>
+        <script>
+var initial = 'wrongAnswers=0\n'+
+'wordToGuess="apple"\n'+
+'guessedWord="_____"\n'+
+'playerwon = false\n'+
+'procedure makeGuess(wordToGuess,letter,guessedWord)\n'+
+'	found=false\n'+
+'	for i = 0 to wordToGuess.length-1\n'+
+'		if wordToGuess[i] = letter\n'+
+'			found = true\n'+
+'			guessedWord[i]=letter\n'+
+'		end if\n'+
+'	next\n'+
+'	if found=false\n'+
+'		print("that letter is not in word")\n'+
+'		wrongAnswers = wrongAnswers + 1\n'+
+'	else\n'+
+'		print("Current guesses: " + guessedWord)\n'+
+'	end if\n'+
+'end procedure\n'+
+'while wrongAnswers < 7 and playerwon = false\n'+
+'	playerletter = input("enter a letter to guess")\n'+
+'	makeGuess(wordToGuess,playerletter,guessedWord)\n'+
+'	if wrongAnswers = 7 then\n'+
+'		print ("You lose!")\n'+
+'	end if\n'+
+'	if wordToGuess = guessedWord then\n'+
+'		playerwon = true\n'+
+'		print("Congratulations you guessed the word")\n'+
+'	end if\n'+
+'end while\n'
+
+
+
+
+
+
+
+
+        function displayErrors(fb) {
+            if(fb.errors.length > 0) {
+                alert(fb.errors[0]);
+            }
+        } 
+
+        $(document).ready(function(){
+            var parson = new ParsonsWidget({
+                'sortableId': 'sortable',
+                'trashId': 'sortableTrash',
+                'max_wrong_lines': 2,
+                'feedback_cb' : displayErrors
+            });
+            parson.init(initial);
+            parson.shuffleLines();
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                parson.getFeedback();
+            });
+        });
+        </script>
+    </body>
+</html>
