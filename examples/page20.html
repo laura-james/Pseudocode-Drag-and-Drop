@@ -1,35 +1,41 @@
 <!doctype html>
 <html>
     <head>
-        <title>Pseudocode: Fizz Buzz</title>
+        <title>Word guesser</title>
         <link href="../parsons.css" rel="stylesheet" />
         <link href="../lib/prettify.css" rel="stylesheet" />
         <script src="../lib/prettify.js"></script>
     </head>
     <body>
-        <h2>Fizz Buzz</h2>
-		<p>Write a program that prints the numbers between 1 and 100 (inclusive).</p>
-        <p>† 
-If the number is a multiple of 3, print 'fizz'.† </p>
-        <p>
-If a multiple of 5, print 'buzz'</p>
-        <p>
-If both print 'fizzBuzz'.† </p>
-        <p>
-If†not a multiple of 3 or 5, print the digit.</p>
-        <p>
+        <h2>Word guesser</h2>
+	
+		<p>George is writing a game that asks the user to guess a word.</p>
 
-		</p>
+<p>The word to guess is a constant in the program - i.e. it is hardcoded into the program</p>
+
+<p>The user has 10 guesses to try and guess the word.</p>
+<p>Write the pseudocode for this game that:</p>
+
+<p>1.	Asks the user for their guess.</p>
+<p>2.	If it is not the same as the stored word it displays ‚Äúincorrect‚Äù and the number of guesses they have left. They then must guess again.</p>
+<p>3.	If they cannot guess the correct word within 10 guesses, the program outputs ‚ÄúGame Over‚Äù and the game ends</p>
+<p>4.	If they do guess the correct word, the ‚Äúcongratulations‚Äù you guessed the word in X tries‚Äù where X is the number of guesses</p>
+
+<p>[7 marks]
+</p>
+		
+		
+		
+
         <p>Construct a pseudocode answer by drag&amp;dropping and reordering lines from the
-            left to the right.
-            </p>
+            left to the right.    </p>
         <div id="sortableTrash" class="sortable-code"></div>
         <div id="sortable" class="sortable-code">
         </div>
         <div style="clear:both;"></div>
         <p id="buttons">
-            <a href="#" id="newInstanceLink">New instance</a>
-            <a href="#" id="feedbackLink">Get feedback</a>
+            <a href="#" id="newInstanceLink">Jumble the blocks!</a>
+            <a href="#" id="feedbackLink">Try your code!</a>
         </p>
         <script src="../lib/jquery.min.js"></script>
         <script src="../lib/jquery-ui.min.js"></script>
@@ -38,21 +44,24 @@ If†not a multiple of 3 or 5, print the digit.</p>
         <script src="../lib/lis.js"></script>
         <script src="../parsons.js"></script>
         <script>
-        var initial = 'for i = 1 to 100\n'+
-'	if i MOD 3 = 0 AND i MOD 5 = 0 then\n'+
-'		print "FizzBuzz"\n'+
-'	else if i MOD 3 = 0 then\n'+
-'		print "Fizz"\n'+
-'	else if i MOD 5 = 0 then\n'+
-'		print "Buzz"\n'+
+var initial = ''+
+'numTries = 0\n'+
+'const wordToGuess = "apple"\n'+
+'guess = ""\n'+
+'while guess!=wordToGuess and numTries<=10\n'+
+'	guess=input("Input your guess")\n'+
+'	numTries = numTries + 1\n'+
+'	if guess==wordToGuess then\n'+
+'		print("Congratulations! You guessed the word in " +numTries+" tries!")\n'+
 '	else\n'+
-'		print i\n'+
+'		guessesLeft = 10 - numTries\n'+
+'		print("Incorrect - you have "+guessesLeft+" left)\n'+
 '	end if\n'+
-'end for\n'+
-'while true #distractor\n'
-
-
-
+'end while\n'+
+'if numTries>10 then\n'+
+'	print("Game Over!")\n'+
+'end if\n';
+console.log(initial);
 
         function displayErrors(fb) {
             if(fb.errors.length > 0) {
@@ -64,7 +73,7 @@ If†not a multiple of 3 or 5, print the digit.</p>
             var parson = new ParsonsWidget({
                 'sortableId': 'sortable',
                 'trashId': 'sortableTrash',
-                'max_wrong_lines': 1,
+                'max_wrong_lines': 2,
                 'feedback_cb' : displayErrors
             });
             parson.init(initial);

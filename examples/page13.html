@@ -1,11 +1,10 @@
 <!doctype html>
 <html>
     <head>
-        <title>Pseudocode: Coin Toss</title>
+        <title>Convert to hexadecimal</title>
         <link href="../parsons.css" rel="stylesheet" />
         <link href="../lib/prettify.css" rel="stylesheet" />
         <script src="../lib/prettify.js"></script>
-		<link rel="icon" href="../favicon.ico">
     </head>
     <body>
         <h2>Convert a decimal number into a 2 digit hexadecimal number</h2>
@@ -14,6 +13,7 @@
         <p>There is a subroutine, HEX(), that takes a denary number between 10 and 15 and returns the corresponding hexadecimal number. E.g. HEX(10) would return "A“, HEX(15) would return "F“.</p>
 
 		<p>Write an algorithm, using the subroutine HEX(), to convert any whole decimal number between 0 and 255 into a 2 digit hexadecimal number.<p>
+		<p>Remember the DIV keyword is for 'floor division' meaning you ignore any remainder</p>
         <p>Construct a pseudocode answer by drag&amp;dropping and reordering lines from the
             left to the right.
     </p>
@@ -35,11 +35,13 @@
 var initial = 
 'decimal = input("Input decimal number between 0 and 255")\n'+
 'digitl = decimal DIV 16\n'+
+'digit2 = decimal - (digit1*16)\n'+
 'if digitl>=10 then \n'+
 '	digit1 = HEX(digit1)\n'+
-'digit2 = decimal - (digit1*16)\n'+
+'end if\n'+
 'if digit2>=10 then \n'+
 '	digit2=HEX(digit2)\n'+
+'end if\n'+
 'print(str(digit1) + str(digit2))\n';
 
 
